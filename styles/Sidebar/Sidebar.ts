@@ -28,4 +28,6 @@ export const TitlePlayShape = styled.h1`
   text-transform: uppercase;
   color: #a4a6b3;
   text-align: center;
+  margin: 0;
+  line-height: 64px;
 `;

@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
         background: 'transparent',
         boxShadow: 'none',
       },
+      background: '#363740',
     },
     menuButton: {
       marginRight: theme.spacing(2),
