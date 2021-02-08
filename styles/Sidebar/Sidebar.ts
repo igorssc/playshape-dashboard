@@ -1,9 +1,6 @@
 import { Drawer, Link, ListItem } from '@material-ui/core';
 import styled from 'styled-components';
 
-export const Root = styled.div`
-  display: 'flex';
-`;
 export const NavLink = styled(Link)`
   text-decoration: none;
   color: black !important;
@@ -16,6 +13,10 @@ export const StyledDrawer = styled(Drawer)`
     width: 240px;
     background: #363740;
   }
+`;
+export const Nav = styled.nav`
+  flex-shrink: 0;
+  width: 240px;
 `;
 export const StyledListItem = styled(ListItem)`
   color: #a4a6b3 !important;

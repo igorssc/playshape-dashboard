@@ -13,12 +13,52 @@ import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Header from '../Header/Header';
 import {
+  Nav,
   NavLink,
-  Root,
   StyledDrawer,
   StyledListItem,
 } from '../../../styles/Sidebar/Sidebar';
-import { List } from '@material-ui/core';
+import {
+  createStyles,
+  List,
+  makeStyles,
+  Theme,
+  useTheme,
+} from '@material-ui/core';
+
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    drawer: {
+      [theme.breakpoints.up('sm')]: {
+        width: drawerWidth,
+        flexShrink: 0,
+      },
+    },
+    appBar: {
+      [theme.breakpoints.up('sm')]: {
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: drawerWidth,
+      },
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+      [theme.breakpoints.up('sm')]: {
+        display: 'none',
+      },
+    },
+    // necessary for content to be below app bar
+    toolbar: theme.mixins.toolbar,
+    drawerPaper: {
+      width: drawerWidth,
+    },
+    content: {
+      padding: '20px',
+      flexGrow: 1,
+    },
+  }),
+);
 
 interface Props {
   /**
@@ -29,6 +69,8 @@ interface Props {
 }
 
 export default function Sidebar(props: Props) {
+  const classes = useStyles();
+  const theme = useTheme();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -74,9 +116,12 @@ export default function Sidebar(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Root>
-      <Header callbackParent={handleDrawerToggle}></Header>
-      <nav aria-label="mailbox folders">
+    <>
+      <Header
+        callbackParent={handleDrawerToggle}
+        className={classes.appBar}
+      ></Header>
+      <Nav aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
           <StyledDrawer
@@ -96,7 +141,7 @@ export default function Sidebar(props: Props) {
             {drawer}
           </StyledDrawer>
         </Hidden>
-      </nav>
-    </Root>
+      </Nav>
+    </>
   );
 }
