@@ -1,11 +1,12 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
+import React, { useEffect, useState } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { createStyles, makeStyles, Theme } from '@material-ui/core';
+import { AppBar, createStyles, makeStyles, Theme } from '@material-ui/core';
+import { TitlePlayShape } from '../../../styles/Header/Header';
+import { Helmet } from 'react-helmet';
 
 const drawerWidth = 240;
 
@@ -13,6 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     appBar: {
       [theme.breakpoints.up('sm')]: {
+        height: '60px !important',
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: '240px',
       },
@@ -28,6 +30,12 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const Header = (props) => {
+  const [title, setTitle] = useState(null);
+  useEffect(() => {
+    setTimeout(() => {
+      setTitle(document.title);
+    }, 0);
+  }, []);
   const classes = useStyles();
 
   return (
@@ -44,9 +52,7 @@ const Header = (props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Responsive drawer
-          </Typography>
+          <TitlePlayShape>{title}</TitlePlayShape>
         </Toolbar>
       </AppBar>
     </>

@@ -1,10 +1,16 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { Main, Root } from '../../styles/Settings/Settings';
 import Sidebar from '../components/Sidebar/Sidebar';
 
 export default function Settings() {
   return (
-    <>
+    <Root>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <Sidebar></Sidebar>
-      <h1>Configurações</h1>
-    </>
+      <Main>Configurações</Main>
+    </Root>
   );
 }

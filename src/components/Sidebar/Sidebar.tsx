@@ -1,26 +1,28 @@
 import React from 'react';
-
-import Divider from '@material-ui/core/Divider';
-import Hidden from '@material-ui/core/Hidden';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import PieChartIcon from '@material-ui/icons/PieChart';
-import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
-import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
-import PeopleIcon from '@material-ui/icons/People';
-import StoreIcon from '@material-ui/icons/Store';
-import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
-import SettingsIcon from '@material-ui/icons/Settings';
 import Header from '../Header/Header';
 import {
-  Nav,
   NavLink,
-  StyledDrawer,
   StyledListItem,
+  TitlePlayShape,
 } from '../../../styles/Sidebar/Sidebar';
 import {
+  ConfirmationNumber,
+  PieChart,
+  EmojiObjects,
+  People,
+  Store,
+  NotificationsActive,
+  Settings,
+} from '@material-ui/icons';
+import {
   createStyles,
+  CssBaseline,
+  Divider,
+  Drawer,
+  Hidden,
   List,
+  ListItemIcon,
+  ListItemText,
   makeStyles,
   Theme,
   useTheme,
@@ -30,32 +32,24 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: {
+      display: 'flex',
+    },
     drawer: {
       [theme.breakpoints.up('sm')]: {
         width: drawerWidth,
         flexShrink: 0,
       },
     },
-    appBar: {
-      [theme.breakpoints.up('sm')]: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
-      },
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-      [theme.breakpoints.up('sm')]: {
-        display: 'none',
-      },
-    },
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: drawerWidth,
+      background: '#363740',
     },
     content: {
-      padding: '20px',
       flexGrow: 1,
+      padding: theme.spacing(3),
     },
   }),
 );
@@ -83,12 +77,12 @@ export default function Sidebar(props: Props) {
       <Divider />
       <List>
         {[
-          ['Início', <PieChartIcon />],
-          ['Cupons', <ConfirmationNumberIcon />],
-          ['Suporte', <EmojiObjectsIcon />],
-          ['Usuários', <PeopleIcon />],
-          ['Lojas', <StoreIcon />],
-          ['Notificações', <NotificationsActiveIcon />],
+          ['Início', <PieChart />],
+          ['Cupons', <ConfirmationNumber />],
+          ['Suporte', <EmojiObjects />],
+          ['Usuários', <People />],
+          ['Lojas', <Store />],
+          ['Notificações', <NotificationsActive />],
         ].map((text, index: number) => (
           <StyledListItem button key={index}>
             <ListItemIcon>{text[1]}</ListItemIcon>
@@ -98,16 +92,14 @@ export default function Sidebar(props: Props) {
       </List>
       <Divider />
       <List>
-        {[['Configurações', <SettingsIcon />, 'settings']].map(
-          (text, index) => (
-            <NavLink key={index} href={`/${text[2]}`}>
-              <StyledListItem button>
-                <ListItemIcon>{text[1]}</ListItemIcon>
-                <ListItemText primary={text[0]} />
-              </StyledListItem>
-            </NavLink>
-          ),
-        )}
+        {[['Configurações', <Settings />, 'settings']].map((text, index) => (
+          <NavLink key={index} href={`/${text[2]}`}>
+            <StyledListItem button>
+              <ListItemIcon>{text[1]}</ListItemIcon>
+              <ListItemText primary={text[0]} />
+            </StyledListItem>
+          </NavLink>
+        ))}
       </List>
     </div>
   );
@@ -117,31 +109,40 @@ export default function Sidebar(props: Props) {
 
   return (
     <>
-      <Header
-        callbackParent={handleDrawerToggle}
-        className={classes.appBar}
-      ></Header>
-      <Nav aria-label="mailbox folders">
+      <CssBaseline />
+      <Header callbackParent={handleDrawerToggle}></Header>
+      <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
-          <StyledDrawer
+          <Drawer
             container={container}
             variant="temporary"
+            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
             open={mobileOpen}
             onClose={handleDrawerToggle}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
             ModalProps={{
               keepMounted: true, // Better open performance on mobile.
             }}
           >
             {drawer}
-          </StyledDrawer>
+          </Drawer>
         </Hidden>
         <Hidden xsDown implementation="css">
-          <StyledDrawer variant="permanent" open>
+          <Drawer
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            variant="permanent"
+            open
+          >
+            <TitlePlayShape>PlayShape</TitlePlayShape>
             {drawer}
-          </StyledDrawer>
+          </Drawer>
         </Hidden>
-      </Nav>
+      </nav>
     </>
   );
 }

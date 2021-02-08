@@ -1,11 +1,11 @@
-import GlobalStyle from '../../styles/globals';
+import GlobalStyle from '../../styles/Globals';
 import Head from 'next/head';
+import React from 'react';
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Teste</title>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           rel="stylesheet"

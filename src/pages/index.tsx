@@ -1,11 +1,15 @@
 import Sidebar from '../components/Sidebar/Sidebar';
-import { Root } from '../../styles/Home/Home';
-const s = { padding: '20px', flexGrow: 1 };
+import { Main, Root } from '../../styles/Home/Home';
+import React from 'react';
+import { Helmet } from 'react-helmet';
 export default function Home() {
   return (
     <Root>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <Sidebar></Sidebar>
-      <p style={s}>
+      <Main>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus
         non enim praesent elementum facilisis leo vel. Risus at ultrices mi
@@ -18,7 +22,7 @@ export default function Home() {
         tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum
         varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt.
         Lorem donec massa sapien faucibus et molestie ac.
-      </p>
+      </Main>
     </Root>
   );
 }
