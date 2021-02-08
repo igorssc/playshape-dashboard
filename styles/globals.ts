@@ -6,7 +6,7 @@ export default createGlobalStyle`
   box-sizing: border-box;
   
   body{
-    background: orange !important;
+    background: #F7F8FC !important;
     font-family: Roboto, Helvetica, sans-serif !important;
     font-weight: 300 !important;
     color: inherit;

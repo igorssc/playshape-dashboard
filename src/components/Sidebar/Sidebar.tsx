@@ -77,17 +77,19 @@ export default function Sidebar(props: Props) {
       <Divider />
       <List>
         {[
-          ['Início', <PieChart />],
-          ['Cupons', <ConfirmationNumber />],
-          ['Suporte', <EmojiObjects />],
-          ['Usuários', <People />],
-          ['Lojas', <Store />],
-          ['Notificações', <NotificationsActive />],
+          ['Início', <PieChart />, ''],
+          ['Cupons', <ConfirmationNumber />, ''],
+          ['Suporte', <EmojiObjects />, ''],
+          ['Usuários', <People />, ''],
+          ['Lojas', <Store />, ''],
+          ['Notificações', <NotificationsActive />, ''],
         ].map((text, index: number) => (
-          <StyledListItem button key={index}>
-            <ListItemIcon>{text[1]}</ListItemIcon>
-            <ListItemText primary={text[0]} />
-          </StyledListItem>
+          <NavLink key={index} href={`/${text[2]}`}>
+            <StyledListItem button>
+              <ListItemIcon>{text[1]}</ListItemIcon>
+              <ListItemText primary={text[0]} />
+            </StyledListItem>
+          </NavLink>
         ))}
       </List>
       <Divider />

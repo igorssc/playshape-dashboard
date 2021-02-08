@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOMServer from 'react-dom/server';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import { AppBar, createStyles, makeStyles, Theme } from '@material-ui/core';
 import { TitlePlayShape } from '../../../styles/Header/Header';
-import { Helmet } from 'react-helmet';
 
 const drawerWidth = 240;
 
@@ -17,6 +15,8 @@ const useStyles = makeStyles((theme: Theme) =>
         height: '60px !important',
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: '240px',
+        background: 'transparent',
+        boxShadow: 'none',
       },
     },
     menuButton: {

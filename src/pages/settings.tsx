@@ -7,7 +7,7 @@ export default function Settings() {
   return (
     <Root>
       <Helmet>
-        <title>Home</title>
+        <title>Settings</title>
       </Helmet>
       <Sidebar></Sidebar>
       <Main>Configurações</Main>
