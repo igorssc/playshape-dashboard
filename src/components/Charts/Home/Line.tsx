@@ -23,7 +23,6 @@ const data = {
       lineTension: 0.3,
       backgroundColor: '#f2c215',
       borderColor: '#f2c215',
-      borderCapStyle: 'butt',
       borderDash: [],
       borderDashOffset: 0.0,
       borderJoinStyle: 'miter',
