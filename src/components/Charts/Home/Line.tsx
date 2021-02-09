@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Line } from 'react-chartjs-2';
+import { Line, defaults } from 'react-chartjs-2';
+
+defaults.global.legend.display = false;
 
 const data = {
   labels: [
@@ -34,7 +36,6 @@ const data = {
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      hideInLegendAndTooltip: false,
       data: [10, 29, 130, 481, 656, 955, 1240, 1550, 1790, 2139, 3690, 5690],
     },
   ],
@@ -47,10 +48,5 @@ export default class LineChart extends Component {
         <Line ref="chart" data={data} />
       </div>
     );
-  }
-
-  componentDidMount() {
-    const { datasets } = this.refs.chart.chartInstance.data;
-    console.log(datasets[0].data);
   }
 }
