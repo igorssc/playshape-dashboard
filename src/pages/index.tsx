@@ -2,26 +2,41 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import { Main, Root } from '../../styles/Home/Home';
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import Box from '../components/Box/Box';
+import MainData from '../components/MainData/MainData';
+import LineChart from '../components/Charts/Home/Line';
 export default function Home() {
   return (
     <Root>
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <Sidebar></Sidebar>
+      <Sidebar title={'Início'}></Sidebar>
       <Main>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus
-        non enim praesent elementum facilisis leo vel. Risus at ultrices mi
-        tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non
-        tellus. Convallis convallis tellus id interdum velit laoreet id donec
-        ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl
-        suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod
-        quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet
-        proin fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras
-        tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum
-        varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt.
-        Lorem donec massa sapien faucibus et molestie ac.
+        <MainData>
+          <Box>
+            <h1 className="title-main-data">Usuários</h1>
+            <p className="value-main-data">2.600</p>
+          </Box>
+          <Box>
+            <h1 className="title-main-data">Usuários Online</h1>
+            <p className="value-main-data">113</p>
+          </Box>
+          <Box>
+            <h1 className="title-main-data">Lojas</h1>
+            <p className="value-main-data">987</p>
+          </Box>
+          <Box>
+            <h1 className="title-main-data">Vendas Hoje</h1>
+            <p className="value-main-data">R$ 600,00</p>
+          </Box>
+        </MainData>
+        <MainData>
+          <Box>
+            <h1 className="titleLineChart">Total de Usuários</h1>
+            <LineChart />
+          </Box>
+        </MainData>
       </Main>
     </Root>
   );

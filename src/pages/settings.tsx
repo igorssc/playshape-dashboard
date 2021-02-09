@@ -9,7 +9,7 @@ export default function Settings() {
       <Helmet>
         <title>Settings</title>
       </Helmet>
-      <Sidebar></Sidebar>
+      <Sidebar title="Configurações"></Sidebar>
       <Main>Configurações</Main>
     </Root>
   );

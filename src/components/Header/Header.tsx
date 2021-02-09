@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import IconButton from '@material-ui/core/IconButton';
+import React from 'react';
+// import { useEffect, useState } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import { AppBar, createStyles, makeStyles, Theme } from '@material-ui/core';
+import { AppBar, CssBaseline, IconButton, Toolbar } from '@material-ui/core';
 import { TitlePlayShape } from '../../../styles/Header/Header';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 const drawerWidth = 240;
 
@@ -29,20 +28,24 @@ const useStyles = makeStyles((theme: Theme) =>
     toolbar: theme.mixins.toolbar,
   }),
 );
-
-const Header = (props) => {
-  const [title, setTitle] = useState(null);
-  useEffect(() => {
-    setTimeout(() => {
-      setTitle(document.title);
-    }, 0);
-  }, []);
+interface Props {
+  title: string;
+  callbackParent: VoidFunction;
+}
+const Header = (props: Props) => {
+  // const [title, setTitle] = useState(null);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setTitle(document.title);
+  //   }, 0);
+  // }, []);
+  const title = props.title;
   const classes = useStyles();
 
   return (
     <>
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
+      <AppBar position="absolute" className={classes.appBar}>
         <Toolbar>
           <IconButton
             color="inherit"

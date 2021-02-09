@@ -15,7 +15,6 @@ import {
   Settings,
 } from '@material-ui/icons';
 import {
-  createStyles,
   CssBaseline,
   Divider,
   Drawer,
@@ -23,10 +22,13 @@ import {
   List,
   ListItemIcon,
   ListItemText,
+} from '@material-ui/core';
+import {
+  createStyles,
   makeStyles,
   Theme,
   useTheme,
-} from '@material-ui/core';
+} from '@material-ui/core/styles';
 
 const drawerWidth = 240;
 
@@ -59,6 +61,7 @@ interface Props {
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
+  title: string;
   window?: () => Window;
 }
 
@@ -112,7 +115,7 @@ export default function Sidebar(props: Props) {
   return (
     <>
       <CssBaseline />
-      <Header callbackParent={handleDrawerToggle}></Header>
+      <Header callbackParent={handleDrawerToggle} title={props.title}></Header>
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
