@@ -38,4 +38,7 @@ export const BoxStyled = styled.div`
       margin: 0;
     }
   }
+  canvas {
+    width: 100% !important;
+  }
 `;
