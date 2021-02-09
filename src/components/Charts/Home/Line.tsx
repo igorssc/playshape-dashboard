@@ -25,7 +25,6 @@ const data = {
       borderColor: '#f2c215',
       borderDash: [],
       borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
       pointBorderColor: '#363740',
       pointBackgroundColor: '#f2c215',
       pointBorderWidth: 1,
